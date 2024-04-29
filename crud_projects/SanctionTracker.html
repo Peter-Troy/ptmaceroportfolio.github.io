@@ -56,11 +56,11 @@
               <p>I Start by logging in or Signing up</p>
 							<span class="image "><img src="sanction_tracker-image/1.png"  width="400" height="500" alt="" /></span>
               <p>Input Provider Details</p>
-			 				<span class="image main"><img src="sanction_tracker-image/2.png"  width="800" height="650" alt="" /></span>
+			 				<span class="image main"><img src="sanction_tracker-image/2.png"  width="800" height="520" alt="" /></span>
               <p>I can see the records that I created in the "Entries" Menu at the left sidebar</p>
-							<span class="image main"><img src="sanction_tracker-image/3.png"  width="800" height="380" alt="" /></span>
+							<span class="image main"><img src="sanction_tracker-image/3.png"  width="800" height="390" alt="" /></span>
 			  <p>I can also search between the start and end date of the day I created the record, and can convert the data to excel</p>
-			  				<span class="image main"><img src="sanction_tracker-image/3.4.png"  width="800" height="300" alt="" /></span>
+			  				<span class="image main"><img src="sanction_tracker-image/3.4.png"  width="800" height="360" alt="" /></span>
 							<span class="image main"><img src="sanction_tracker-image/3.8.png"  width="800" height="150" alt="" /></span>
               <p>I can add other sanctions in the "Sanctions" menu</p>
 							<span class="image main"><img src="sanction_tracker-image/4.png"  width="800" height="500" alt="" /></span>
@@ -90,7 +90,41 @@
 							<span class="image "><img src="sanction_tracker-image/Sanction Tracker - Process Flowchart.png"  width="1500" height="900" alt="" /></span>
               <p>Physical Design Model of the User and the Provider Data</p>
 							<span class="image "><img src="sanction_tracker-image/Physical Design Model.png"  width="1500" height="900" alt="" /></span>
-            </div>
+
+				<h3>Challenges encountered during the making of Sanction Tracker Project</h3>
+				<h4>Pagination Implementation:</h4>
+				<p>DESCRIPTION: Implementing pagination for displaying large datasets on the Entries and Sanctions pages posed several challenges.<br>CAUSE: Initially, using basic pagination logic fetched all records from the database and displayed them on a single page. However, as the dataset grew larger, this approach became inefficient and slowed down page loading times.<br>
+				OUTCOME: implemented server-side pagination using SQL's LIMIT and OFFSET clauses This approach significantly improved page loading times and user experience by loading only a subset of records at a time.<br>
+				LESSONS LEARNED: Importance of considering scalability and performance implications when designing features.
+				</p>
+				<h4>Dark Feature Button:</h4>
+				<p>DESCRIPTION: Adding a dark mode button for switching between light and dark themes had styling and user preference challenges.<br>
+					CAUSE: Making dark mode work meant overriding default styles and ensuring it looked good on different browsers and devices.<br>
+					ATTEMPTS TO SOLVE: First, I made a basic button with JavaScript. But getting the styles right and avoiding conflicts with other stylesheets was tough.<br>
+					OUTCOME: I switched to a better method using CSS variables and separate stylesheets. Now, the theme stays the same even when users come back later.<br>
+					LESSON LEARNED: Good CSS organization is key for consistent themes. CSS variables help with dynamic themes. And it's important to remember what users like for a smooth experience.<br> 
+				</p>
+				<h4>Exporting Data to Excel:</h4>
+				<p>DESCRIPTION: Exporting data to Excel presented several challenges due to the complexity of file formats and managing datasets.<br>
+					CAUSE: Lack of familiarity with PHPExcel library and PHP's file handling mechanisms resulted in difficulties implementing the feature effectively. Ensuring compatibility across different file formats and handling errors also posed challenges.<br>
+					ATTEMPTS TO SOLVE: Attempted using basic PHP file handling functions for generating Excel files, encountering issues with formatting and compatibility.Explored various third-party libraries like PHPExcel and PhpSpreadsheet for exporting data to Excel but faced challenges integrating them into the existing codebase.Conducted research through online documentation, tutorials, and forums to understand best practices.<br>
+					OUTCOME: After multiple trial and error attempts and thorough debugging, successfully implemented the export functionality without relying on PhpSpreadsheet library.
+					I utilized PHP's built-in functions for handling CSV files. The code generates a CSV file directly using PHP's fputcsv() function to write data to a file stream ($file). This approach doesn't involve any third-party libraries like PhpSpreadsheet or PHPExcel.<br>
+					LESSON LEARNED: Emphasized the importance of understanding documentation and examples provided by third-party libraries before integration.
+					Gained insights into PHP's file handling mechanisms and enhanced problem-solving skills in managing data export operations.
+				</p> 
+				<h4>Dropdown Option Implementation for available sanctions:</h4>
+				<p>DESCRIPTION: The main challenge was implementing the dropdown option based on available sanctions.<br>
+					CAUSE: Difficulty arose from integrating the dropdown with sanctions data from the sanctions page.<br>
+					ATTEMPTS TO SOLVE: Attempted PHP for dropdown population, but faced limitations in dynamic updates.<br>
+					Switched to JavaScript for dropdown updates, but encountered difficulties with integration.<br>
+					OUTCOME: Successfully implemented dropdown options using JavaScript for dynamic updates.
+					Resolved integration issues by refining JavaScript functions for dropdown population.<br>
+					LESSON LEARNED: Recognized the importance of JavaScript for dynamic user interactions.
+					Improved understanding of integrating frontend components with backend data.
+					Gained experience in troubleshooting JavaScript issues for consistent functionality.
+				</p>
+			</div>
 					</div>
 
 				<!-- Footer -->
