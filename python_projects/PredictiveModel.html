@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Troy C. Macero</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+							<a href="../index.html" class="logo">
+								<span class="symbol"><img src="../images/profilepic.png" alt="" /></span><span class="title">Peter Troy C. Macero</span>
+							</a>
+              
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="../index.html">Home</a></li>
+              <li><a href="../javascript_projects/javascript_projects.html">Javascript Projects</a></li>
+							<li><a href="../python_projects/python_projects.html">Python Projects</a></li>
+							<li><a href="../crud_projects/crud_projects.html">CRUD Projects</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<div style="text-align: center;">	
+								<h1><a>House Price Predictive Model</a></h1>
+							</div>
+							<p>This document explains how to create a predictive model for housing prices. The model uses linear regression to estimate a house's sale price based on selected data features. Important steps include cleaning the data, modifying it, choosing useful features, and testing the model. </p>
+              <div style="text-align: center;">	
+                <h1><a>Data Preparation</a></h1>
+							</div>
+  
+              <h2><a>Loading the Dataset</a></h2>
+                            <p>The dataset was loaded using Pandas and contains housing data with various features. The raw data required significant preprocessing before being used for modeling:</p>
+                            <pre>
+                              <code style="color: white;">
+                                import pandas as pd
+                                import seaborn as sns
+                                import matplotlib.pyplot as plt
+                                import numpy as np
+                                
+                                from sklearn.model_selection import train_test_split
+                                from sklearn.linear_model import LinearRegression
+                                from sklearn.metrics import mean_squared_error, r2_score
+                                
+                                data = pd.read_csv('C:/Python Project/Predictive Model/train.csv')
+                                
+                              </code>
+                            </pre>
+                            <h2><a>Handling Missing Values</a></h2>
+                            <p> Missing values in the 'TotalBsmtSF' feature were filled with the median value to keep the data balanced and straightforward. This method provides a reliable way to handle missing data.</p>
+                            <pre>
+                              <code style="color: white;">
+                                median_value = data['TotalBsmtSF'].median()
+                                data['TotalBsmtSF'] = data['TotalBsmtSF'].fillna(median_value)
+                              </code>
+                            </pre>
+                            
+                            <h2><a>Outlier Removal</a></h2>
+                            <p>Outliers in key features like `GrLivArea` and `SalePrice` were removed to improve model performance. Thresholds were determined based on domain knowledge and data distribution</p>
+                            <p>GrLivArea and SalePrice are outliers because they have very large or unusual values that are far from the rest of the data, which can affect the results of analysis and predictions. </p>
+
+
+                            <pre>
+                              <code style="color: white;">
+                                data = data[data['GrLivArea'] < 4000]  # Exclude extremely large living areas
+                                data = data[data['SalePrice'] < 500000]  # Exclude very high sale prices
+                              </code>
+                            </pre>
+                            <p>Removing these outliers helps prevent them from disproportionately influencing the model, leading to more accurate predictions.</p>
+
+              <div style="text-align: center;">	
+                <h1><a>Exploratory Data Analysis (EDA)</a></h1>
+              </div>
+              <h2><a>Histogram of SalePrice</a></h2>             
+              <p>The distribution of the `SalePrice` feature was visualized to examine skewness and identify the need for transformations:</p>
+              <pre>
+                <code style="color: white;">
+                  plt.figure(figsize=(8, 5))
+                  data['SalePrice'].hist(bins=30, color='skyblue', edgecolor='black')
+                  plt.title('Distribution of SalePrice')
+                  plt.xlabel('SalePrice')
+                  plt.ylabel('Frequency')
+                  plt.show()
+                </code>
+              </pre>
+              <span class="image main"><img src="predictiveModel_image/histogram.png"  width="800" height="850" alt="" /></span>
+              <p>The histogram revealed a right-skewed distribution, prompting a log transformation. The log function is used to make a skewed distribution more balanced because it reduces the impact of very large values</p>
+              <div style="text-align: center;">	
+                <h1><a>Data Transformation</a></h1>
+              </div>
+              <h2><a>Log Transformation</a></h2> 
+              <p>We used a log function on the 'SalePrice' to even out the data and reduce imbalance. This helps the linear regression model work more accurately</p>
+              <pre>
+                <code style="color: white;">
+                  data['LogSalePrice'] = np.log(data['SalePrice'])
+                </code>
+              </pre>
+              <h2><a>Feature Selection</a></h2>  
+              <p>
+                Relevant features were selected based on their correlation with the target variable. The chosen features include:<br>
+                <b>OverallQual</b>: This reflects the quality of the house, which directly impacts its value. Higher-quality materials and finishes usually lead to a higher sale price<br>
+                <b>GrLivArea</b>: The size of the living area is a key factor in determining a house's value. Larger living spaces are generally more desirable and command higher prices<br>
+                <b>GarageCars</b>: The number of garage spaces affects convenience and utility, making it an important selling point. Houses with more garage space are typically valued higher<br>
+                <b>TotalBsmtSF</b>: The basement area adds usable space, whether for storage, living, or recreation, contributing to the house's overall value<br>
+              </p>
+
+              <pre>
+                <code style="color: white;">
+                  features = data[['OverallQual', 'GrLivArea', 'GarageCars', 'TotalBsmtSF']]
+                  target = data['LogSalePrice']
+                </code>
+              </pre>
+
+              <div style="text-align: center;">	
+                <h1><a>Modeling</a></h1>
+              </div>
+              <h2><a>Data Splitting</a></h2> 
+
+              <p>The dataset was split into training and testing sets using an 80-20 split. This ensures that the model is trained on one portion of the data and validated on unseen data:</p>
+              <pre>
+                <code style="color: white;">
+                  X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
+                </code>
+              </pre>
+              <h2><a>Model Training</a></h2> 
+              <p>A linear regression model was trained on the selected features and the log-transformed target variable:</p>
+              <pre>
+                <code style="color: white;">
+                  model = LinearRegression()
+                  model.fit(X_train, y_train)
+                </code>
+              </pre>
+              <h2><a>Predictions</a></h2> 
+              <p>Predictions were made on the test set, and results were transformed back to the original scale for meaningful interpretation:</p>
+              <pre>
+                <code style="color: white;">
+                  predictions = model.predict(X_test)
+                  predictions_original_scale = np.exp(predictions)
+                </code>
+              </pre>
+              <div style="text-align: center;">	
+                <h1><a>Model Evaluation</a></h1>
+              </div>
+              <h2><a>Performance Metrics</a></h2> 
+              <p>The model was evaluated using:
+                Mean Squared Error (MSE):** Measures average squared difference between actual and predicted values.<br>
+                R² Score:** Represents the proportion of variance explained by the model.
+              </p>
+
+              <pre>
+                <code style="color: white;">
+                  mse = mean_squared_error(np.exp(y_test), predictions_original_scale)
+                  r2 = r2_score(np.exp(y_test), predictions_original_scale)
+
+                  print(f'Mean Squared Error: {mse}')
+                  print(f'R^2 Score: {r2}')
+                </code>
+              </pre>
+
+              <div style="text-align: center;">	
+                <h1><a>Visualization of Results</a></h1>
+              </div>
+              <h2><a>Actual vs Predicted Plot</a></h2> 
+              <p>This scatter plot compares predicted housing prices with actual prices. The red dashed line represents perfect predictions:</p>
+              <pre>
+                <code style="color: white;">
+                  plt.figure(figsize=(10, 6))
+                  plt.scatter(np.exp(y_test), predictions_original_scale)
+                  plt.plot([np.exp(y_test).min(), np.exp(y_test).max()],
+                          [np.exp(y_test).min(), np.exp(y_test).max()], '--r', lw=2)
+                  plt.xlabel('Actual SalePrice')
+                  plt.ylabel('Predicted SalePrice')
+                  plt.title('Actual vs Predicted SalePrice')
+                  plt.show()
+                </code>
+              </pre>
+              <span class="image main"><img src="predictiveModel_image/actualVsPredicted.png"  width="800" height="850" alt="" /></span>
+              <h2><a>Residual Plot</a></h2> 
+              <p>The residual plot evaluates the error consistency across predictions. A lowess line (red) is included to visualize trends:</p>
+              <pre>
+                <code style="color: white;">
+                  plt.figure(figsize=(10, 6))
+                  sns.residplot(
+                      x=predictions_original_scale,
+                      y=np.exp(y_test) - predictions_original_scale,
+                      lowess=True,
+                      color='blue',
+                      line_kws={'color': 'red', 'lw': 1}
+                  )
+                  plt.xlabel('Predicted SalePrice')
+                  plt.ylabel('Residuals')
+                  plt.title('Residuals vs Predicted SalePrice')
+                  plt.show()
+                </code>
+              </pre>
+              <span class="image main"><img src="predictiveModel_image/residualsVsPredicted.png"  width="800" height="850" alt="" /></span>
+              <div style="text-align: center;">	
+                <h1><a>Discussion and Improvements</a></h1>
+              </div>
+              <h2><a>Model Insights</a></h2>
+              <p>
+                The log transformation improved model accuracy by addressing skewness in `SalePrice`.<br>
+                Outlier removal ensured that extreme values did not unduly influence predictions.
+              </p>
+              <h2><a>Residual Analysis</a></h2>
+              <p>
+                The residual plot indicates a slight heteroscedasticity issue, with errors increasing for higher-priced houses. This suggests that further feature engineering or alternative modeling approaches, such as ensemble methods, could improve performance.
+              </p>
+              <h2><a>Future Directions</a></h2>
+              <p>Incorporate additional relevant features such as location-based variables.<br>
+                Experiment with advanced models like Random Forest or Gradient Boosting.<br>
+                Perform hyperparameter tuning to optimize the linear regression model further.
+              </p>
+              <h2><a>Conclusion</a></h2>
+              <p>This model estimates housing prices using linear regression, focusing on key features like OverallQual, GrLivArea, GarageCars, and TotalBsmtSF. Careful data cleaning, transformation, and feature selection helped achieve strong predictive accuracy, making it a reliable tool for analyzing housing markets and refining further predictions.
+              </p>
+              
+						</div>
+					</div>
+
+				<!-- Footer -->
+        <footer id="footer">
+          <div class="inner">
+            <section>
+              <h2>Email Me </h2>
+              <p>
+                petermacero19@gmail.com | ptmacero19@gmail.com
+              </p>
+            </section>
+            <section>
+              <h2>Follow</h2>
+              <ul class="icons">
+                <li><a href="https://github.com/Peter-Troy" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+              </ul>
+            </section>
+
+            <ul class="copyright">
+              <li>&copy; Peter Troy C. Macero & HTML5 UP . All rights reserved</li>
+            </ul>
+          </div>
+        </footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
+
