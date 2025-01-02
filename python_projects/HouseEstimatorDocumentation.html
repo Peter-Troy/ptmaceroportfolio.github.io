@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Troy C. Macero</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+							<a href="../index.html" class="logo">
+								<span class="symbol"><img src="../images/profilepic.png" alt="" /></span><span class="title">Peter Troy C. Macero</span>
+							</a>
+							
+							<!-- Nav -->
+							<nav>
+								<ul>
+									<li><a href="#menu">Menu</a></li>
+								</ul>
+							</nav>
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="../index.html">Home</a></li>
+                            <li><a href="../javascript_projects/javascript_projects.html">Javascript Projects</a></li>
+							<li><a href="../python_projects/python_projects.html">Python Projects</a></li>
+							<li><a href="../crud_projects/crud_projects.html">CRUD Projects</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<div style="text-align: center;">	
+								<h1><a>House Price Estimator using Kraggle Dataset</a></h1>
+							</div>
+							<p>The House Price Estimator is a Flask-based web application that predicts house prices based on user-inputted features such as house quality, living area, garage capacity, and basement size. The application uses a pre-trained machine learning model to estimate the price of a house, providing users with quick and reliable predictions.</p>
+						
+							<div style="text-align: center;">	
+								<h1><a>Code Structure</a></h1>
+							  </div>
+							  <h2><a>Libraries Used:</a></h2>
+							  <p>
+								<strong>Flask:</strong>
+								To create the web application.<br>
+								<strong>numpy:</strong>
+								For numerical computations.<br>
+								<strong>pandas:</strong>
+								For data manipulation and handling.<br>
+								<strong>joblib:</strong>
+								For loading the pre-trained machine learning model.<br>
+							</p>
+							<h2><a>key Components:</a></h2>
+							<p><strong>Initialization</strong></p>
+							<p>The Flask app is initialized to serve as the backbone of the web application. Required libraries are imported to support data handling, computations, and model integration.</p>
+							<pre>
+								<code style="color: white;">
+					from flask import Flask, render_template, request
+					import numpy as np
+					import pandas as pd
+					import joblib
+					
+					# Initialize Flask app
+					app = Flask(__name__)
+								</code>
+							</pre>
+		
+								<p><strong>Model Loading</strong></p>
+								<p> The pre-trained model is loaded from the specified path using joblib.</p>
+							<pre>
+								<code style="color: white;">
+			# Load the pre-trained model (change the path to where you have stored it)
+			model = joblib.load('C:/JN/house_price_model.pkl')
+								</code>
+							</pre>
+
+								<p><strong>Routes</strong></p>
+
+								<p>Home Route (/)</p>
+								<p>Renders the index.html file, which contains the user interface for input.</p>
+								<pre>
+                                    <code style="color: white;">
+			@app.route('/')
+			def home():
+				return render_template('index.html')
+                                    </code>
+                                </pre>
+
+							<p>Predict Route (/predict)</p>
+							<p>Accepts POST requests from the form submission. Extracts user inputs, processes them into a format the model can accept, and predicts the house price. Displays the estimated price on the UI or an error message if an exception occurs.</p>
+							<pre>
+								<code style="color: white;">
+	@app.route('/predict', methods=['POST'])
+	def predict():
+		try:
+			# Get input from the user
+			house_quality = int(request.form['house_quality'])
+			living_area = float(request.form['living_area'])
+			garage_cars = int(request.form['garage_cars'])
+			basement_area = float(request.form['basement_area'])
+
+			# Create a DataFrame with the user inputs
+			specific_house = pd.DataFrame([[house_quality, living_area, garage_cars, basement_area]], 
+				columns=['OverallQual', 'GrLivArea', 'GarageCars', 'TotalBsmtSF'])
+
+			# Predict the log price
+			estimated_log_price = model.predict(specific_house)
+
+			# Convert the log price back to the original scale
+			estimated_price = np.exp(estimated_log_price).flatten()[0]
+
+			return render_template('index.html', estimated_price=f"${estimated_price:,.2f}")
+		except Exception as e:
+			return render_template('index.html', error_message=f"Error: {str(e)}")
+								</code>
+							</pre>
+							<p><strong>Run the Application</strong></p>
+							<p>Starts the Flask application</p>
+							<pre>
+								<code style="color: white;">
+					if __name__ == '__main__':
+						app.run(debug=True)
+								</code>
+							</pre>
+
+							<h1><a>______________________________________________</a></h1>
+
+							<div style="text-align: center;">
+								<h2><a>Benefits of the Project</a></h2>
+							</div>
+							<p>
+								<strong>Practical Real-World Application:</strong>
+								Helps users estimate house prices based on key features. Useful for homeowners, buyers, and real estate agents.<br>
+								<strong>Interactive and User-Friendly:</strong>
+								The web interface allows users to input house details easily. Displays predictions clearly and concisely.<br>
+								<strong>Educational Value:</strong>
+								Demonstrates end-to-end implementation of a machine learning model. Combines web development, data science, and deployment skills.<br>
+								<strong>Scalable:</strong>
+								Can be extended with more features and integrated into larger systems.<br>
+							</p>
+
+							<div style="text-align: center;">	
+								<h1><a>Implementation Steps</a></h1>
+							</div>
+							<p>
+								<strong>Prepare the Pre-Trained Model:</strong>
+								Train and save the model as a .pkl file using joblib.dump(). Ensure the model accepts features: OverallQual, GrLivArea, GarageCars, and TotalBsmtSF.<br>
+								<strong>Set Up the Flask Application:</strong>
+								Define routes (/ for home, /predict for predictions). Load the model and integrate prediction logic.<br>
+								<strong>Create the User Interface (HTML):</strong>
+								Use index.html to provide input fields for user details and display results.<br>
+								<strong>Run Locally:</strong>
+								Execute python app.py and navigate to http://127.0.0.1:5000/ in a browser.<br>
+								<strong>Test and Validate:</strong>
+								Ensure the predictions are accurate and the UI responds correctly to inputs.<br>
+							</p>
+
+							<div style="text-align: center;">	
+								<h1><a>Challenges and Solutions</a></h1>
+							</div>
+							<h2><a>Model Loading</a></h2>
+							<p>
+								<strong>issue:</strong>
+								Ensuring the model file path is correct.<br>
+								<strong>Solution:</strong>
+								Validate the path and confirm file existence before running the app.<br>
+								
+							</p>
+							<h2><a>Input Validation</a></h2>
+							<p>
+								<strong>issue:</strong>
+								Handling incorrect or missing inputs.<br>
+								<strong>Solution:</strong>
+								Added a try-except block to catch exceptions and provide error feedback.<br>
+								
+							</p>
+							<h2><a>Debugging Flask Errors</a></h2>
+							<p>
+								<strong>issue:</strong>
+								Resolving template rendering and route errors.<br>
+								<strong>Solution:</strong>
+								Debugged using Flask's error messages and logs.<br>
+								
+							</p>
+							<div style="text-align: center;">	
+								<h1><a>learnings</a></h1>
+							</div>
+							<p>
+								<strong>Flask Development:</strong>
+								Learned to create and manage routes and templates.<br>
+								<strong>Model Integration:</strong>
+								Integrated a pre-trained machine learning model with a web application.<br>
+								<strong>Error Handling:</strong>
+								Implemented error handling for robust user interactions.<br>
+								<strong>UI and UX Design:</strong>
+								Focused on creating a simple, user-friendly interface.<br>
+								
+							</p>
+							<div style="text-align: center;">	
+								<h1><a>Future Improvements</a></h1>
+							</div>
+							<p>
+								<strong>Deployment:</strong>
+								Deploy the application to a cloud service for online access.<br>
+								<strong>Enhanced Features:</strong>
+								Add more features to improve prediction accuracy.<br>
+								<strong>Responsive Design:</strong>
+								Optimize the UI for mobile and tablet devices.<br>
+								
+							</p>
+							</div>
+						</div>
+
+                        <!-- Footer -->
+						<footer id="footer">
+							<div class="inner">
+								<section>
+									<h2>Email Me </h2>
+									<p>
+										petermacero19@gmail.com | ptmacero19@gmail.com
+									</p>
+								</section>
+								<section>
+									<h2>Follow</h2>
+									<ul class="icons">
+										<li><a href="https://github.com/Peter-Troy" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									</ul>
+								</section>
+	
+								<ul class="copyright">
+									<li>&copy; Peter Troy C. Macero & HTML5 UP . All rights reserved</li>
+								</ul>
+							</div>
+						</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
+
+<style>
+    pre {
+        text-align: center;
+    }
+
+    code {
+        display: inline-block;
+        text-align: left; /* If you want the code to be left-aligned within the centered <pre> */
+    }
+</style>

@@ -203,8 +203,25 @@
                 </code>
               </pre>
               <span class="image main"><img src="predictiveModel_image/actualVsPredicted.png"  width="800" height="850" alt="" /></span>
+
+              <strong><p>Blue Dots:</p></strong>
+              <p>Each blue dot represents a house in the dataset.
+                The position of each dot shows the actual price on the X-axis and the price predicted by the model on the Y-axis</p>
+              
+              <strong><p>Red Line (Ideal Prediction):</p></strong>
+              <p>The red dashed line is the "perfect prediction" line, where predicted price equals actual price.
+                If all the blue dots were exactly on this line, it would mean the model made perfect predictions.</p>
+              
+              <strong><p>Scatter Pattern:</p></strong>
+              <p>Most of the dots are close to the red line, which means the model is predicting prices fairly accurately for many homes.
+                However, some dots are further away from the red line, meaning the model either overpredicted (dot is above the line) or underpredicted (dot is below the line) the price for those homes.</p>
+
+              <strong><p>Observations:</p></strong>
+              <p>The model performs well for homes with prices between $100,000 and $300,000, as most of the dots are tightly clustered around the red line in this range.
+                For homes with prices above $300,000, the dots start to spread out more, showing that the model’s predictions are less accurate for more expensive houses. Even with outliers excluded, the relationship between house features and sale prices might not be purely linear. High-priced homes often have unique characteristics (e.g., location, luxury features) that don’t scale linearly.</p>
+                <h1><a>______________________________________________</a></h1>
               <h2><a>Residual Plot</a></h2> 
-              <p>The residual plot evaluates the error consistency across predictions. A lowess line (red) is included to visualize trends:</p>
+              <p>The residual plot evaluates the error consistency across predictions. A lowess line (red) is included to visualize trends. Residuals are an essential concept in regression analysis because they help evaluate how well a model fits the data.</p>
               <pre>
                 <code style="color: white;">
                   plt.figure(figsize=(10, 6))
@@ -222,9 +239,74 @@
                 </code>
               </pre>
               <span class="image main"><img src="predictiveModel_image/residualsVsPredicted.png"  width="800" height="850" alt="" /></span>
+              <strong><p>X-axis (Predicted SalePrice):</p></strong>
+              <p>Represents the predicted house prices from the model.
+                The values range from approximately $100,000 to $500,000.</p>
+              
+                <strong><p>Y-axis (Residuals):</p></strong>
+              <p>Residuals show how far off the predictions are from the actual prices.
+                Positive residuals indicate that the model underpredicted the price (the actual price is higher than predicted).
+                Negative residuals indicate overprediction (the actual price is lower than predicted).
+                The range of residuals is from -100,000 to 100,000, showing some significant deviations from the actual values.</p>
+              
+                <strong><p>Blue Dots:</p></strong>
+              <p>Each blue dot represents a single data point, showing the residuals for a specific house’s predicted price.
+                There's a wide spread of residuals, especially for higher predicted sale prices, indicating that the model is less accurate for more expensive houses.</p>
+              
+                <strong><p>Red Line (Best-Fit Line for Residuals):</a></h2></strong>
+              <p>The red line in the plot shows the best-fit line (usually a horizontal line around zero) for the residuals.
+                Ideally, residuals should be randomly distributed around this line. However, there appears to be some curvature, which could suggest non-linearity in the model.</p>
+              
+                <strong><p>Pattern Observations:</a></h2></strong>
+              <p>There is some clustering of points around the lower end of the predicted prices, indicating that the model tends to perform better at predicting prices for houses in the lower price range. As predicted prices increase, the spread of residuals becomes larger, showing the model's predictions are more variable for expensive homes.</p>
+              
               <div style="text-align: center;">	
-                <h1><a>Discussion and Improvements</a></h1>
+                <h1><a>Custom House Price Estimator: Enter Your Requirements</a></h1>
               </div>
+              <h2><a>House Quality Scale (1 to 10) </a></h2>
+              <p>
+                <strong>1: Very Poor</strong>
+                The house is in bad condition, with major issues like broken walls, leaking roof, or unsafe structure.<br>
+                <strong>2: Poor</strong>
+                Still livable but has lots of problems like peeling paint, old plumbing, and damaged floors.<br>
+                <strong>3: Below Average</strong>
+
+                Basic structure is okay, but the house looks very old, with outdated materials and finishes.<br>
+                <strong>4: Fair</strong>
+
+                The house is functional but has visible wear and tear (e.g., scratched floors, stained walls).<br>
+                <strong>5: Average</strong>
+
+                Typical house in fair condition, no major issues, but nothing fancy. Functional and clean.<br>
+                <strong>6: Above Average</strong>
+
+                Good quality materials and finishes, some modern upgrades, but not top-notch.<br>
+                <strong>7: Good</strong>
+
+                Well-maintained house with good craftsmanship, nice materials, and modern design.<br>
+                <strong>8: Very Good</strong>
+
+                High-quality finishes, upgraded features, and excellent maintenance. Almost luxurious.<br>
+                <strong>9: Excellent</strong>
+
+                Luxury-level materials and design. Very well-built and maintained, with extra features.<br>
+                <strong>10: Exceptional</strong>
+
+                Top-of-the-line, designer-level quality, with premium materials and features like smart home systems, custom designs, or unique architecture.
+
+              </p>
+              <p>Fill up the Desired Requirements of the house</p>
+              <span class="image"><img src="predictiveModel_image/housePriceEstimator.png"  width="800" height="850" alt="" /></span>
+                <p>Hit the 'Estimate Price' button to render the estimated sale price for the 2021-2022 period</p>
+              <span class="image"><img src="predictiveModel_image/housePriceEstimator-2.png"  width="800" height="850" alt="" /></span>
+              <div style="text-align: center;">	
+                <h1><a href="HouseEstimatorDocumentation.html">Click this to See House Estimator Project Documentation</a></h1>
+              </div>
+                <h1><a>______________________________________________</a></h1>
+
+                <div style="text-align: center;">	
+                  <h1><a>Discussion and Improvements</a></h1>
+                </div>
               <h2><a>Model Insights</a></h2>
               <p>
                 The log transformation improved model accuracy by addressing skewness in `SalePrice`.<br>
