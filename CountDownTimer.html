@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Troy C. Macero</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+							<a href="../index.html" class="logo">
+								<span class="symbol"><img src="../images/profilepic.png" alt="" /></span><span class="title">Peter Troy C. Macero</span>
+							</a>
+							
+							<!-- Nav -->
+							<nav>
+								<ul>
+									<li><a href="#menu">Menu</a></li>
+								</ul>
+							</nav>
+							
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="../index.html">Home</a></li>
+                            <li><a href="../javascript_projects/javascript_projects.html">Javascript Projects</a></li>
+							<li><a href="../python_projects/python_projects.html">Python Projects</a></li>
+							<li><a href="../crud_projects/crud_projects.html">CRUD Projects</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<div style="text-align: center;">	
+								<h1><a href="https://peter-troy.github.io/CountdownTimer-Javascript.github.io/">Click this to open the Project</a></h1>
+							</div>
+							<span class="image main"><img src="countdownTimer-image/1.png"  width="600" height="600" alt="" /></span>
+							<p>Input Hours, Minutes, and Seconds in the input field:</p>
+                            <span class="image main"><img src="countdownTimer-image/2.png"  width="600" height="850" alt="" /></span>
+                            <p>Click the "Start Countdown" Button</p>
+							<span class="image main"><img src="countdownTimer-image/3.png"  width="600" height="850" alt="" /></span>
+                            <p>Time will start to countdown.</p>
+
+							<p>Javascript Code:</p>
+
+                            <pre>
+								<code>
+// Wait for the DOM to be fully loaded before executing the script
+document.addEventListener("DOMContentLoaded", function() {
+// Get references to the start button and timer display elements
+const startBtn = document.getElementById("startBtn");
+const timerDisplay = document.getElementById("timer");
+
+// Attach a click event listener to the start button
+startBtn.addEventListener("click", startCountdown);
+
+// Function to handle the countdown when the start button is clicked
+function startCountdown() {
+// Retrieve user input for hours, minutes, and seconds
+const hours = parseInt(document.getElementById("hours").value) || 0;
+const minutes = parseInt(document.getElementById("minutes").value) || 0;
+const seconds = parseInt(document.getElementById("seconds").value) || 0;
+
+// Calculate the total time in seconds
+const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+let remainingTime = totalSeconds;
+
+// Function to update the timer display
+function updateTimer() {
+// Calculate hours, minutes, and seconds remaining
+const hoursRemaining = Math.floor(remainingTime / 3600);
+const minutesRemaining = Math.floor((remainingTime % 3600) / 60);
+const secondsRemaining = remainingTime % 60;
+
+// Update the timer display with the formatted time
+timerDisplay.textContent = `${hoursRemaining.toString().padStart(2, '0')} : ${minutesRemaining.toString().padStart(2, '0')} : ${secondsRemaining.toString().padStart(2, '0')}`;
+
+// Continue updating the timer if time remains, otherwise display "Countdown Complete!"
+if (remainingTime > 0) {
+remainingTime--;
+setTimeout(updateTimer, 1000);
+} else {
+timerDisplay.textContent = "Countdown Complete!";
+}
+}
+
+// Initial call to start the countdown
+updateTimer();
+}
+});
+
+								</code>
+                            </pre>
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<section>
+							<h2>Email Me </h2>
+							<p>
+								petermacero19@gmail.com | ptmacero19@gmail.com
+							</p>
+						</section>
+						<section>
+							<h2>Follow</h2>
+							<ul class="icons">
+								<li><a href="https://github.com/Peter-Troy" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+
+						<ul class="copyright">
+							<li>&copy; Peter Troy C. Macero & HTML5 UP . All rights reserved</li>
+						</ul>
+					</div>
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
+
