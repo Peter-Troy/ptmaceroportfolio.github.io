@@ -51,105 +51,184 @@
 						<div class="inner">
 							<div style="text-align: center;">	
 								<h1><a>Simple Shape Predictor</a></h1>
+                <p>The Simple Shape Predictor lets users draw shapes like crosses, squares, and triangles on a canvas. It then guesses the shape using a trained AI model.</p>
+              <p>The app is made with Python, Tkinter, PyTorch, and other tools, creating a fun and interactive way to draw and recognize shapes</p>
 							</div>
-							<p>The Simple Shape Predictor lets users draw shapes like crosses, squares, and triangles on a canvas. It then guesses the shape using a trained AI model. The app is made with Python, Tkinter, PyTorch, and other tools, creating a fun and interactive way to draw and recognize shapes.
-                            </p>
+							
               <div style="text-align: center;">	
                 <h1><a>How to train the model?</a></h1>
-                <p>The app lets users draw shapes (limited to Square, Triangle, and Cross) using a mouse on a Tkinter canvas. After drawing, it processes the image and uses a trained AI model to guess the shape. It can recognize crosses, squares, and triangles. The interface is simple, with buttons to clear the canvas and predict the shape.</p>
+                <p>Manually draw shapes to train the model using Tkinter, There is a dropdown option for each shapes.</p>
+                <p>Run "draw_shapes.py" File to start drawing manually.</p>
+                <div class="row" style="content: ''; clear: both; display: table;">
+                  <div class="column" style="float: left; width: 33.33%; padding: 100px;">
+                      <img src="ShapePredictor_image/trainSquare.png" alt="Snow" style="width:100%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
+                  </div>
+                  <div class="column" style="float: left; width: 33.33%; padding: 100px;">
+                      <img src="ShapePredictor_image/trainCross.png" alt="Forest" style="width:100%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
+                  </div>
+                  <div class="column" style="float: left; width: 33.33%; padding: 100px;">
+                      <img src="ShapePredictor_image/trainTriangle.png" alt="Mountains" style="width:100%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
+                  </div>
+                </div>
+                <p>The save file is stored in this directory</p>
+                <img src="ShapePredictor_image/datasetFolder.png" alt="Snow" style="width:20%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
+
                 <p>Then added a random 500 auto generated shapes to enhance Accuracy</p>
                     <div class="row" style="content: ''; clear: both; display: table;">
                       <div class="column" style="float: left; width: 33.33%; padding: 5px;">
-                          <img src="ShapePredictor_image/500cross.png" alt="Snow" style="width:100%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
+                          <img src="ShapePredictor_image/500square.png" alt="Snow" style="width:100%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
                       </div>
                       <div class="column" style="float: left; width: 33.33%; padding: 5px;">
-                          <img src="ShapePredictor_image/500triangle.png" alt="Forest" style="width:100%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
+                          <img src="ShapePredictor_image/500cross.png" alt="Forest" style="width:100%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
                       </div>
                       <div class="column" style="float: left; width: 33.33%; padding: 5px;">
-                          <img src="ShapePredictor_image/500square.png" alt="Mountains" style="width:100%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
+                          <img src="ShapePredictor_image/500triangle.png" alt="Mountains" style="width:100%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
                       </div>
                     </div>
+
+                  <p>Run the "preprocess.py" file, This will process all images in the dataset and save them as .pt files in the processed directory.</p>
+                  <p>Saving as .pt Files, Using .pt files ensures that the images are in the form of tensors, which is the format PyTorch expects for training. This is also more efficient for loading the data later during training.</p>
+                  <img src="ShapePredictor_image/preprocess.png" alt="Snow" style="width:100%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
+
+                  <p>After preprocessing, run "train.py" this file will use the processed .pt files to train the model.</p>
+                  <img src="ShapePredictor_image/trainShape.png" alt="Snow" style="width:50%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);">
+                  <p>Epoch represents one complete pass through the entire dataset during training.</p>
+                  <p>loss value measures how far the model's predictions are from the actual labels. A lower loss means the model is making better predictions.</p>
+
               </div>
+              <ul>
+                <li><p><strong>1/10</strong> – Model starts learning, high loss as weights are random</p></li>
+                <li><p><strong>2/10</strong> – Loss drops significantly, meaning the model is learning patterns</p></li>
+                <li><p><strong>3/10</strong> – The model has improved, making accurate predictions</p></li>
+                <li><p><strong>4/10</strong> – Very low loss, indicating near-perfect training performance</p></li>
+                <li><p><strong>5/10</strong> – Further improvement, minimal loss</p></li>
+                <li><p><strong>6/10</strong> – Loss continues to decrease, model is fine-tuning itself</p></li>
+                <li><p><strong>7/10</strong> – Almost no error, model is highly confident</p></li>
+                <li><p><strong>8/10</strong> – Slight increase in loss, possibly due to overfitting or noise</p></li>
+                <li><p><strong>9/10</strong> – Very low loss, almost perfect predictions</p></li>
+                <li><p><strong>10/10</strong> – Final loss remains extremely low, showing a well-trained model</p></li>
+              </ul>
 
              
 
   
               <h2><a>Model Quality Testing: Evaluating Shape Recognition Accuracy - CROSS</a></h2>
-                            <video width="640" height="360" controls>
-                            <source src="ShapePredictor_image/cross.mp4" type="video/mp4">
-                            </video>
-                            <p>test 1 - Success</p>
+                            <div style="text-align: center;">
+                              <video width="640" height="360" controls>
+                              <source src="ShapePredictor_image/cross.mp4" type="video/mp4">
+                              </video>
+                              <p>_____________________________________________________________</p>
+                            </div>
+    
                             <span class="image "><img src="ShapePredictor_image/cross/cross1.png"  width="700" height="450" alt="" /></span>
-                            <p>test 2 - Success</p>
+                            <p>test 1 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/cross/cross2.png"  width="700" height="450" alt="" /></span>
-                            <p>test 3 - Success</p>
+                            <p>test 2 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/cross/cross3.png"  width="700" height="450" alt="" /></span>
-                            <p>test 4 - Fail. Model only recognize shapes mostly in the center and reads the cross as a square instead.</p>
+                            <p>test 3 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/cross/cross4.png"  width="700" height="450" alt="" /></span>
-                            <p>test 5 - Fail. Model only recognize shapes mostly in the center and reads the cross as a square instead.</p>
+                            <p>test 4 - Fail. Model only recognize shapes mostly in the center and reads the cross as a square instead.</p>
+
                             <span class="image "><img src="ShapePredictor_image/cross/cross5.png"  width="700" height="450" alt="" /></span>
-                            <p>test 6 - Success</p>
+                            <p>test 5 - Fail. Model only recognize shapes mostly in the center and reads the cross as a square instead.</p>
+
                             <span class="image "><img src="ShapePredictor_image/cross/cross6.png"  width="700" height="450" alt="" /></span>
-                            <p>test 7 - Success</p>
+                            <p>test 6 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/cross/cross7.png"  width="700" height="450" alt="" /></span>
-                            <p>test 8 - Success</p>
+                            <p>test 7 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/cross/cross8.png"  width="700" height="450" alt="" /></span>
-                            <p>test 9 - Success</p>
+                            <p>test 8 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/cross/cross9.png"  width="700" height="450" alt="" /></span>
-                            <p>test 10 - Success</p>
+                            <p>test 9 - Fail. Model only recognize shapes mostly in the center and reads the cross as a square instead.</p>
+
                             <span class="image "><img src="ShapePredictor_image/cross/cross10.png"  width="700" height="450" alt="" /></span>
+                            <p>test 10 - Success</p>
+
                             <p>Conclusion: The model correctly identified the shapes 8 out of 10 times during testing, indicating that it performs well overall. However, the misclassification of the cross as a square on both the left and right sides suggests that the model may have some difficulty with shapes drawn off-center. This could be due to training data bias or positioning issues, and further adjustments to the training process or preprocessing steps may help improve accuracy in such cases.</p>
                 
                             <h2><a>Model Quality Testing: Evaluating Shape Recognition Accuracy - TRIANGLE</a></h2>
-                            <video width="640" height="360" controls>
-                            <source src="ShapePredictor_image/triangle.mp4" type="video/mp4">
-                            </video>
-                            <p>test 1 - Success</p>
+                            <div style="text-align: center;">
+                              <video width="640" height="360" controls>
+                              <source src="ShapePredictor_image/triangle.mp4" type="video/mp4">
+                              </video>
+                              <p>_____________________________________________________________</p>
+                            </div>
+                            
                             <span class="image "><img src="ShapePredictor_image/triangle/triangle1.png"  width="700" height="450" alt="" /></span>
-                            <p>test 2 - Success</p>
+                            <p>test 1 - Success</p>
+                            
                             <span class="image "><img src="ShapePredictor_image/triangle/triangle2.png"  width="700" height="450" alt="" /></span>
-                            <p>test 3 - Fail. Model only recognize shapes mostly in the center and reads the triangle as a square instead.</p>
+                            <p>test 2 - Success</p>
+                            
                             <span class="image "><img src="ShapePredictor_image/triangle/triangle3.png"  width="700" height="450" alt="" /></span>
-                            <p>test 4 - Fail. Model only recognize shapes mostly in the center and reads the triangle as a square instead.</p>
+                            <p>test 3 - Fail. Model only recognize shapes mostly in the center and reads the triangle as a square instead.</p>
+                            
                             <span class="image "><img src="ShapePredictor_image/triangle/triangle4.png"  width="700" height="450" alt="" /></span>
-                            <p>test 5 - Success</p>
+                            <p>test 4 - Fail. Model only recognize shapes mostly in the center and reads the triangle as a square instead.</p>
+                            
                             <span class="image "><img src="ShapePredictor_image/triangle/triangle5.png"  width="700" height="450" alt="" /></span>
-                            <p>test 6 - Success</p>
+                            <p>test 5 - Success</p>
+                            
                             <span class="image "><img src="ShapePredictor_image/triangle/triangle6.png" width="700" height="450" alt="" /></span>
-                            <p>test 7 - Fail. Model only recognize shapes mostly in the center and reads the triangle as a square instead.</p>
+                            <p>test 6 - Success</p>
+                            
                             <span class="image "><img src="ShapePredictor_image/triangle/triangle7.png" width="700" height="450" alt="" /></span>
-                            <p>test 8 - Fail. Drew a right triangle, but reads it as square.</p>
+                            <p>test 7 - Fail. Model only recognize shapes mostly in the center and reads the triangle as a square instead.</p>
+                            
                             <span class="image "><img src="ShapePredictor_image/triangle/triangle8.png"  width="700" height="450" alt="" /></span>
-                            <p>test 9 - Success</p>
+                            <p>test 8 - Fail. Drew a right triangle, but reads it as square.</p>
+                            
                             <span class="image "><img src="ShapePredictor_image/triangle/triangle9.png"  width="700" height="450" alt="" /></span>
-                            <p>test 10 - Success</p>
+                            <p>test 9 - Success</p>
+                            
                             <span class="image "><img src="ShapePredictor_image/triangle/triangle10.png"  width="700" height="450" alt="" /></span>
+                            <p>test 10 - Success</p>
                             <p>Conclusion: The model correctly identified the triangle 6 out of 10 times, but it misclassified it as a square when drawn on the left and right sides of the canvas, as well as when drawn as a right triangle. This suggests that the model struggles with shapes drawn off-center or in different orientations. Further improvements in training and data diversity may help address these issues.</p>
 
                             <h2><a>Model Quality Testing: Evaluating Shape Recognition Accuracy - SQUARE</a></h2>
-                            <video width="640" height="360" controls>
-                            <source src="ShapePredictor_image/square.mp4" type="video/mp4">
-                            </video>
-                            <p>test 1 - Success</p>
+                            <div style="text-align: center;">
+                              <video width="640" height="360" controls>
+                              <source src="ShapePredictor_image/square.mp4" type="video/mp4">
+                              </video>
+                              <p>_____________________________________________________________</p>
+                            </div>
+              
                             <span class="image "><img src="ShapePredictor_image/square/square1.png"  width="700" height="450" alt="" /></span>
-                            <p>test 2 - Success</p>
+                            <p>test 1 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/square/square2.png"  width="700" height="450" alt="" /></span>
-                            <p>test 3 - Success</p>
+                            <p>test 2 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/square/square3.png"  width="700" height="450" alt="" /></span>
-                            <p>test 4 - Success</p>
+                            <p>test 3 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/square/square4.png"  width="700" height="450" alt="" /></span>
-                            <p>test 5 - Success</p>
+                            <p>test 4 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/square/square5.png"  width="700" height="450" alt="" /></span>
-                            <p>test 6 - Success</p>
+                            <p>test 5 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/square/square6.png" width="700" height="450" alt="" /></span>
-                            <p>test 7 - Success</p>
+                            <p>test 6 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/square/square7.png" width="700" height="450" alt="" /></span>
-                            <p>test 8 - Success</p>
+                            <p>test 7 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/square/square8.png"  width="700" height="450" alt="" /></span>
-                            <p>test 9 - Fail. Drew a shape that looks like a square but has 5 corners, model still reads it as square.</p>
+                            <p>test 8 - Success</p>
+
                             <span class="image "><img src="ShapePredictor_image/square/square9.png"  width="700" height="450" alt="" /></span>
-                            <p>test 10 - Success</p>
+                            <p>test 9 - Fail. Drew a shape that looks like a square but has 5 corners, model still reads it as square.</p>
+
                             <span class="image "><img src="ShapePredictor_image/square/square10.png"  width="700" height="450" alt="" /></span>
+                            <p>test 10 - Success</p>
+
                             <p>Conclusion: Correctly predicted the square with a score of 9 out of 10, even when there was a slight deviation (the 5th corner). This shows that the model is quite accurate in recognizing standard shapes, but it still has room for improvement when handling minor variations or imperfections. Overall, the app performs well, but further fine-tuning could enhance its ability to handle shape irregularities more effectively.</p>
 
 
