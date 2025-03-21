@@ -78,6 +78,14 @@ url = 'https://en.wikipedia.org/wiki/List_of_visionary_tall_buildings_and_struct
                                 </code>
                             </pre>
                             <p>Defines the URL of the Wikipedia page to be scraped and the path to the ChromeDriver executable.</p>
+
+                            <pre>
+                                <code>
+path = "C:/Python Project/WebScraping/chromedriver.exe"
+                                </code>
+                            </pre>
+                            <p>Path to the ChromeDriver</p>
+
                             <pre>
                                 <code>
 chrome_options = Options()
@@ -105,6 +113,15 @@ table = WebDriverWait(driver, 10).until(EC.presence_of_element_located(table_loc
                                 </code>
                             </pre>
                             <p>Uses WebDriverWait to wait for the table to be present in the Document Object Model (DOM).</p>
+
+                            <pre>
+                                <code>
+structure_elements = [row.find_element(By.XPATH, './td[1]') for row in rows]
+height_elements = [row.find_element(By.XPATH, './td[2]') for row in rows]
+                                </code>
+                            </pre>
+                            <p>Extract structure names (column 1) and heights (column 2)</p>
+        
                             <pre>
                                 <code>
 structure_names = [element.text for element in structure_elements]
