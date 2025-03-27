@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Troy C. Macero</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+							<a href="../index.html" class="logo">
+								<span class="symbol"><img src="../images/profilepic.png" alt="" /></span><span class="title">Peter Troy C. Macero</span>
+							</a>
+              
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="../index.html">Home</a></li>
+              <li><a href="../javascript_projects/javascript_projects.html">Javascript Projects</a></li>
+							<li><a href="../python_projects/python_projects.html">Python Projects</a></li>
+							<li><a href="../crud_projects/crud_projects.html">CRUD Projects</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<div style="text-align: center;">	
+								<h1><a>PDF to Word Converter App</a></h1>
+                                <h2><a>Introduction</a></h2>
+              <p>In today's digital world, converting PDF documents to editable Word files remains a common challenge. Meet our solution - the PDF to Word Converter, a powerful Python application that bridges the gap between scanned documents and editable text.</p>
+							</div>
+							
+                <div style="text-align: center;">	
+                <h2><a>Chapter 1: The Problem</a></h2>
+                </div>
+                <p>Every day, professionals struggle with two types of PDFs: digital PDFs with selectable text, and scanned PDFs that are essentially just images of text. This application solves both problems with a simple, user-friendly interface.</p>
+                
+              <div style="text-align: center;">	
+                    <h2><a>Chapter 2: The Technology Stack</a></h2>
+              </div>
+                    <p>Built with Python's Tkinter for the interface, this application combines several powerful libraries:</p>
+                 
+                      <ul>
+                        <li><p><strong>PyPDF2</strong> – for digital PDF text extraction</p></li>
+                        <li><p><strong>pytesseract and pdf2image</strong> – OCR (Optical Character Recognition)</p></li>
+                        <li><p><strong>python-docx</strong> – Word document creation</p></li>
+                        <li><p><strong>Poppler</strong> – the PDF rendering engine</p></li>
+                      </ul>
+
+                      <p>A diagram showing how the components interact in the PDF-to-Word text extraction and conversion process:</p>
+                      <div style="text-align: center;"><img src="PdfToWord_image/PdfToWord.jpg" alt="Snow" style="width:40%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);"></div>
+                      
+                          <div style="text-align: center;">	
+                          <h2><a>Chapter 3: Key Features</a></h2>
+                          </div>
+      
+                          <h3 style="color: white;">Dual Processing Modes</h3>
+                              <li><p>Text Extraction for digital PDFs (using PyPDF2)</p></li>
+                              <li><p>Text Extraction for digital PDFs (using PyPDF2)</p></li>
+                          <h3 style="color: white;">Intuitive Interface</h3>
+                              <li><p>File browsing with native dialogs</p></li>
+                              <li><p>Progress tracking with real-time updates</p></li>
+                              <li><p>Clear status notifications</p></li>
+                          <h3 style="color: white;">Smart Output Handling</h3>
+                              <li><p>Automatic output filename suggestion</p></li>
+                              <li><p>Proper page separation in the Word document</p></li>
+                      
+      
+                          <div style="text-align: center;">	
+                          <h2><a>Chapter 4: How It Works</a></h2>
+                          </div>
+                          <p>1. User selects a PDF file and output location</p>
+                          <div style="text-align: center;"><img src="PdfToWord_image/test1.png" alt="Snow" style="width:40%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);"></div>
+      
+                          <p>2. System determines processing mode (text or OCR)</p>
+                          <p>3. For digital PDFs, it Extracts text directly using PyPDF2</p>
+                          <div style="text-align: center;"><img src="PdfToWord_image/test2.png" alt="Snow" style="width:40%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);"></div>
+              
+                          <p>4. For scanned PDFs, it Converts pages to images and Processes each image with Tesseract OCR</p>
+                          <div style="text-align: center;"><img src="PdfToWord_image/test3.png" alt="Snow" style="width:40%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);"></div>
+                          
+                          <p>5. Structures content with page markers</p>
+                          <p>6. Saves to a well-formatted Word document</p>
+                          <div style="text-align: center;"><img src="PdfToWord_image/test4.png" alt="Snow" style="width:40%; height:auto; border-radius:10px; box-shadow:0px 4px 8px rgba(0, 0, 0, 0.2);"></div>
+                    
+               
+
+              <div style="text-align: center;">	
+              <h2><a>Chapter 6: Real-World Applications</a></h2>
+              </div>
+              <p>This tool is useful for:</p>
+                 
+                      <ul>
+                        <li><p>Lawyers converting legal document</p></li>
+                        <li><p>Students digitizing textbook excerpts</p></li>
+                        <li><p>Archivists preserving historical documents</p></li>
+                        <li><p>Businesses processing scanned form</p></li>
+                      </ul>
+                
+                <div style="text-align: center;">	
+                <h2><a>Chapter 7: Future Enhancements</a></h2>
+                 </div>
+                        <ul>
+                            <li><p>Batch processing multiple files</p></li>
+                            <li><p>Advanced formatting options</p></li>
+                            <li><p>Cloud storage integration</p></li>
+                            <li><p>Handwriting recognition</p></li>
+                        </ul>
+                
+
+                
+                            
+
+                          <div style="text-align: center;">	
+                            <h1><a>Source Code</a></h1>
+                          </div>
+
+                          <pre>
+                            <code style="color: white;">
+import tkinter as tk
+from tkinter import filedialog, messagebox, ttk
+import PyPDF2  # For extracting text from digital PDFs
+from pdf2image import convert_from_path  # For converting PDF pages to images (for OCR)
+import pytesseract  # For OCR (extracting text from images)
+from docx import Document  # For creating Word documents
+import os  # For file path operations
+
+
+class PDFExtractorApp:
+    def __init__(self, root):
+        # Initialize the main app window
+        self.root = root
+        self.root.title("PDF to Word Converter")
+        self.root.geometry("600x400")
+
+        # Configure Poppler path (for rendering PDF as images)
+        self.poppler_path = r'C:/Users/Yaiba Kusanagi/Downloads/Release-24.08.0-0/poppler-24.08.0/Library/bin'
+
+        # Verify Poppler installation
+        self.poppler_available = self.check_poppler()
+        if not self.poppler_available:
+            messagebox.showwarning("Warning",
+                                    "Poppler not found at specified path.\n"
+                                    "OCR functionality will be disabled.\n"
+                                    "Please download from:\n"
+                                    "https://github.com/oschwartz10612/poppler-windows/releases")
+
+        # Configure UI styles
+        self.style = ttk.Style()
+        self.style.configure('TFrame', background='#f0f0f0')
+        self.style.configure('TLabel', background='#f0f0f0', font=('Arial', 10))
+        self.style.configure('TButton', font=('Arial', 10))
+        self.style.configure('TRadiobutton', background='#f0f0f0')
+
+        # Main frame layout
+        self.main_frame = ttk.Frame(root)
+        self.main_frame.pack(padx=20, pady=20, fill=tk.BOTH, expand=True)
+
+        # PDF Selection
+        ttk.Label(self.main_frame, text="Select PDF File:").grid(row=0, column=0, sticky=tk.W, pady=(0, 5))
+        self.pdf_path = tk.StringVar()
+        ttk.Entry(self.main_frame, textvariable=self.pdf_path, width=50).grid(row=1, column=0, padx=(0, 10))
+        ttk.Button(self.main_frame, text="Browse", command=self.browse_pdf).grid(row=1, column=1)
+
+        # Processing Mode Options
+        ttk.Label(self.main_frame, text="Processing Mode:").grid(row=2, column=0, sticky=tk.W, pady=(10, 5))
+        self.mode = tk.StringVar(value="text")  # Default to text extraction
+        ttk.Radiobutton(self.main_frame, text="Text Extraction (for digital PDFs)", variable=self.mode,
+                        value="text").grid(row=3, column=0, sticky=tk.W)
+
+        # OCR option for scanned PDFs
+        ocr_radio = ttk.Radiobutton(self.main_frame, text="OCR (for scanned PDFs)", variable=self.mode, value="ocr")
+        ocr_radio.grid(row=4, column=0, sticky=tk.W)
+
+        # Disable OCR if Poppler is unavailable
+        if not self.poppler_available:
+            ocr_radio.state(['disabled'])
+
+        # Output file selection
+        ttk.Label(self.main_frame, text="Output Word File:").grid(row=5, column=0, sticky=tk.W, pady=(10, 5))
+        self.output_path = tk.StringVar()
+
+        # Progress bar
+        self.progress = ttk.Progressbar(self.main_frame, orient=tk.HORIZONTAL, length=400, mode='determinate')
+        self.progress.grid(row=7, column=0, columnspan=2, pady=(20, 10))
+
+        # Convert button
+        ttk.Button(self.main_frame, text="Convert to Word", command=self.process_pdf).grid(row=8, column=0,
+                                                                                            columnspan=2, pady=(10, 0))
+
+        # Status label
+        self.status = ttk.Label(self.main_frame, text="", foreground="green")
+        self.status.grid(row=9, column=0, columnspan=2, pady=(10, 0))
+
+    def check_poppler(self):
+        """Check if Poppler binaries exist at the specified path"""
+        try:
+            required_files = ['pdftoppm.exe', 'pdfinfo.exe']
+            for file in required_files:
+                if not os.path.exists(os.path.join(self.poppler_path, file)):
+                    return False
+            return True
+        except Exception:
+            return False
+
+    def browse_pdf(self):
+        """Select a PDF file and set the output path"""
+        filepath = filedialog.askopenfilename(
+            title="Select PDF File",
+            filetypes=[("PDF Files", "*.pdf"), ("All Files", "*.*")]
+        )
+        if filepath:
+            self.pdf_path.set(filepath)
+            # Suggest output Word file path
+            base = os.path.splitext(filepath)[0]
+            self.output_path.set(f"{base}_extracted.docx")
+
+    def browse_output(self):
+        """Choose the output Word file location"""
+        filepath = filedialog.asksaveasfilename(
+            title="Save Word File As",
+            defaultextension=".docx",
+            filetypes=[("Word Documents", "*.docx"), ("All Files", "*.*")]
+        )
+        if filepath:
+            self.output_path.set(filepath)
+
+    def process_pdf(self):
+        """Main PDF processing function"""
+        pdf_path = self.pdf_path.get()
+        output_path = self.output_path.get()
+
+        # Validate input and output paths
+        if not pdf_path:
+            messagebox.showerror("Error", "Please select a PDF file")
+            return
+
+        if not output_path:
+            messagebox.showerror("Error", "Please specify an output file")
+            return
+
+        try:
+            # Update progress bar
+            self.progress['value'] = 0
+            self.status.config(text="Processing...", foreground="blue")
+            self.root.update_idletasks()
+
+            # Choose processing mode (text or OCR)
+            if self.mode.get() == "text":
+                text = self.extract_text(pdf_path)
+            else:
+                if not self.poppler_available:
+                    messagebox.showerror("Error", "OCR disabled - Poppler not found")
+                    return
+                text = self.extract_text_with_ocr(pdf_path)
+
+            # Save extracted text to Word
+            self.save_to_word(text, output_path)
+
+            # Update progress and show success message
+            self.progress['value'] = 100
+            self.status.config(text=f"Success! Saved to {output_path}", foreground="green")
+            messagebox.showinfo("Success", f"PDF successfully converted to Word document:\n{output_path}")
+
+        except Exception as e:
+            self.status.config(text=f"Error: {str(e)}", foreground="red")
+            messagebox.showerror("Error", f"Failed to process PDF:\n{str(e)}")
+
+    def extract_text(self, pdf_path):
+        """Extract text from digital PDF"""
+        with open(pdf_path, 'rb') as file:
+            reader = PyPDF2.PdfReader(file)
+            text = ""
+            total_pages = len(reader.pages)
+
+            for i, page in enumerate(reader.pages):
+                text += f"--- Page {i + 1} ---\n{page.extract_text() or ''}\n\n"
+                self.progress['value'] = (i + 1) / total_pages * 100
+                self.root.update_idletasks()
+
+            return text
+
+    def extract_text_with_ocr(self, pdf_path):
+        """Extract text from scanned PDF using OCR"""
+        pytesseract.pytesseract.tesseract_cmd = r"C:/Users/Yaiba Kusanagi/Downloads/tesseract.exe"
+
+        try:
+            images = convert_from_path(pdf_path, dpi=300, poppler_path=self.poppler_path)
+            text = ""
+            total_pages = len(images)
+
+            for i, img in enumerate(images):
+                text += f"--- Page {i + 1} ---\n{pytesseract.image_to_string(img, lang='eng')}\n\n"
+                self.progress['value'] = (i + 1) / total_pages * 100
+                self.root.update_idletasks()
+
+            return text
+        except Exception as e:
+            raise Exception(f"OCR failed: {str(e)}\nPoppler path used: {self.poppler_path}")
+
+    def save_to_word(self, text, output_path):
+        """Save extracted text to Word document"""
+        doc = Document()
+        paragraphs = text.split('\n\n')
+
+        for para in paragraphs:
+            if para.strip():
+                if para.startswith("--- Page"):
+                    doc.add_heading(para, level=3)
+                else:
+                    doc.add_paragraph(para)
+
+        doc.save(output_path)
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = PDFExtractorApp(root)
+    root.mainloop()
+                                
+  
+                            </code>
+                          </pre>
+                          
+
+                        </div>
+					</div>
+
+				<!-- Footer -->
+        <footer id="footer">
+          <div class="inner">
+            <section>
+              <h2>Email Me </h2>
+              <p>
+                petermacero19@gmail.com | ptmacero19@gmail.com
+              </p>
+            </section>
+            <section>
+              <h2>Follow</h2>
+              <ul class="icons">
+                <li><a href="https://github.com/Peter-Troy" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+              </ul>
+            </section>
+
+            <ul class="copyright">
+              <li>&copy; Peter Troy C. Macero & HTML5 UP . All rights reserved</li>
+            </ul>
+          </div>
+        </footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
+
